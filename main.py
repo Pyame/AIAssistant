@@ -8,7 +8,7 @@ with sr.Microphone() as source:
     query = recognizer.listen(source)
     
 try:
-    print("You said: " + recognizer.recognize_whisper(query, language= "polish"))
+    print("You said: " + recognizer.recognize_whisper(query, language= "english"))
 except sr.UnknownValueError:
     print("Whisper could not understand audio")
 except sr.RequestError as e:
