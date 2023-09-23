@@ -16,3 +16,6 @@ AI Assistant should have:
 
 For now Meg can only repeat after speaker and type text according to what he/she said.
 Language is configurable.
+
+# Ideas for future
+| Create database to let Meg remember every conversation. DB will also contain basic informations (Ur Name, its Name etc.) for Meg.
