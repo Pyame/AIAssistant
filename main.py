@@ -1,7 +1,7 @@
 import speech_recognition as sr
 import pyttsx3
+import openai
 
-openAI_api_key = "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"
 # Speach engine init
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -15,6 +15,9 @@ activationWord = "Alex" # It should be one word
 # Speach Regonition process
 recognizer = sr.Recognizer()
 
+# OpenAI configuration
+openAI_api_key = "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"
+openai.api_key = openAI_api_key
 
 # Define speak function
 def speak(text, rate = 120):
