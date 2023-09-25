@@ -16,7 +16,7 @@ activationWord = "Alex" # It should be one word
 recognizer = sr.Recognizer()
 
 # OpenAI configuration
-openAI_api_key = "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"
+openAI_api_key = "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"
 openai.api_key = openAI_api_key
 
 # Define speak function
@@ -34,7 +34,13 @@ with sr.Microphone() as source:
 try:
     query = recognizer.recognize_whisper(audio, language= "english")
     print("You said: " + query)
-    speak(query)
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{'role': "user", "content": query}]
+        )
+    response = response.choices[0].message.content
+    speak(response)
+    print(response)
 except sr.UnknownValueError:
     print("Whisper could not understand audio")
 except sr.RequestError as e:
