@@ -13,13 +13,13 @@ AI Assistant should have:
  * [ ] Friendly UI (maybe?)
  * [ ] Default commands
 
-## Speach recognition
+## speech recognition
 
 For now Angel can only repeat after speaker and type text according to what he/she said.
 Language is configurable.
 
-## Text to speach
-Angel can read text and change text to speach. 
+## Text to speech
+Angel can read text and change text to speech. 
 ### To do
 It should be able to talk in many languages, now it's only english.
 ### To fix
