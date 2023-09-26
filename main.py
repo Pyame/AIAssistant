@@ -1,27 +1,35 @@
 import speech_recognition as sr
-import pyttsx3
+from gtts import gTTS
+import playsound
+import openai
 
-
-# Speach engine init
-engine = pyttsx3.init()
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[12].id) # 12 - is for male english
-
+# speech engin configuration
+lang = 'en'
+accent = "com.au"
+slow = False 
 
 # Set activation word
 activationWord = "Alex" # It should be one word
 
 
-# Speach Regonition process
+# speech Regonition process
 recognizer = sr.Recognizer()
 
+# OpenAI configuration
+try: 
+    file = open('api_key.txt', 'r')
+    openAI_api_key = file.read()
+    file.close()
+    openai.api_key = openAI_api_key
+except:
+    print("No key file or wrong directory!")
+    
 
 # Define speak function
 def speak(text, rate = 120):
-    engine.setProperty('rate', rate)
-    engine.say(text)
-    engine.runAndWait()
-
+    speech = gTTS(text = text, lang= lang, slow= slow, tld= accent)
+    speech.save("speech.mp3")
+    playsound.playsound("speech.mp3")
 
 with sr.Microphone() as source:
     print("Say something!")
@@ -31,7 +39,13 @@ with sr.Microphone() as source:
 try:
     query = recognizer.recognize_whisper(audio, language= "english")
     print("You said: " + query)
-    speak(query)
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{'role': "user", "content": query}]
+        )
+    response = response.choices[0].message.content
+    speak(response)
+    print(response)
 except sr.UnknownValueError:
     print("Whisper could not understand audio")
 except sr.RequestError as e:
