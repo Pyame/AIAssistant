@@ -4,21 +4,21 @@ Let's call it Angel for now (later will think about name).
 
 ##  Business requirements 
 AI Assistant should have:
- * [x] Speach recognition
- * [x] Text to speach
+ * [x] speech recognition
+ * [x] Text to speech
  * [ ] Basic understanding of commands
- * [ ] Answering query (speach and text)
+ * [ ] Answering query (speech and text)
  * [ ] Genereating code
  * [ ] Communicate with other programms
  * [ ] friendly UI (maybe?)
 
-## Speach recognition
+## speech recognition
 
 For now Angel can only repeat after speaker and type text according to what he/she said.
 Language is configurable.
 
-## Text to speach
-Angel can read text and change text to speach. 
+## Text to speech
+Angel can read text and change text to speech. 
 ### To do
 It should be able to talk in many languages, now it's only english.
 ### To fix
