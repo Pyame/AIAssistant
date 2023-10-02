@@ -9,4 +9,4 @@ class Chatter():
             openai.api_key = openAI_api_key
         except:
             print("No key file or wrong directory!")
-        pass
+        
