@@ -10,9 +10,10 @@ class Angel():
         self.accent = accent
         self.slow = slow
     
-    
+    # Angel can listen to commands
     def listen(self, query):
         if self.name in query:
+            query.split(' ', 1)[1]
             self.speak(text= "Hello, I'm here to help!")
             self.use_command(query)
     
@@ -24,10 +25,11 @@ class Angel():
         playsound.playsound("speech.mp3")
         
     
-        
-    def use_command(self, text, com=""):
-        if "GPT" in text:
-            ac.use_chat_gpt()
+    # Deciding witch command User want Angel to do
+    def use_command(self, query, com=""):
+        if "GPT" in query:
+            query.split(' ', 1)[1]
+            ac.use_chat_gpt(query)
             
 
     
